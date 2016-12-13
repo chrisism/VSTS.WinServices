@@ -1,0 +1,95 @@
+{
+	"manifestVersion": 1,
+	"id": "jungit-winservices",
+	"name": "Windows Services Toolbox",
+	"description": "Toolbox of tasks to manage windows services",
+	"version": "1.0.3",
+	"publisher": "jungeriusit",
+	"baseUri": "https://github.com/chrisism/",
+	"scopes": [],
+	"tags": [
+		"service",
+		"windows service"
+	],
+	"links": {
+		"home": {
+			"uri": "https://github.com/chrisism/VSTS.WinServices"
+		},
+		"learn": {
+			"uri": "https://github.com/chrisism/VSTS.WinServices"
+		},
+		"support": {
+			"uri": "https://github.com/chrisism/VSTS.WinServices/issues"
+		},
+		"repository": {
+			"uri": "https://github.com/chrisism/VSTS.WinServices"
+		}
+	},
+	"repository": {
+		"type": "git",
+		"uri": "https://github.com/chrisism/VSTS.WinServices"
+	},
+	"screenshots": [
+
+	],
+	"branding": {
+		"color": "rgb(157, 140, 255)",
+		"theme": "light"
+	},
+	"targets": [
+		{
+			"id": "Microsoft.VisualStudio.Services"
+		}
+	],
+	"categories": [
+		"Build and release"
+	],
+	"icons": {
+		"default": "logo.png"
+	},
+	"files": [
+		{ "path": "CreateWindowsService" },
+		{ "path": "StartWindowsService" },
+		{ "path": "StopWindowsService" }
+	],
+	"content": {
+		"details": {
+			"path": "overview.md"
+		},
+		"license": {
+			"path": "license.md"
+		}
+	},
+	"contributions": [
+		{
+			"id": "jungit-createwinservice",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "CreateWindowsService"
+			}
+		},
+		{
+			"id": "jungit-startwinservice",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "StartWindowsService"
+			}
+		},
+		{
+			"id": "jungit-stopwinservice",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "StopWindowsService"
+			}
+		}
+	]
+}
