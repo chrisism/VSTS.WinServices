@@ -30,6 +30,12 @@
 		"uri": "https://github.com/chrisism/VSTS.WinServices"
 	},
 	"screenshots": [
+		{
+			"path": "screenshot-01.jpg"
+		},
+		{
+			"path": "screenshot-02.jpg"
+		}
 
 	],
 	"branding": {
@@ -45,7 +51,7 @@
 		"Build and release"
 	],
 	"icons": {
-		"default": "logo.png"
+		"default": "img/logo.png"
 	},
 	"files": [
 		{ "path": "CreateWindowsService" },

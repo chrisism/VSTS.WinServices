@@ -41,14 +41,9 @@ Creates a new windows service on the target machine.
 ### Start Windows Service
 Starts the windows service.
 ### Options
-		{
-			"name": "serviceName",
-			"type": "string",
-			"label": "Service Name",
-			"defaultValue": "",
-			"required": true,
-			"helpMarkDown": "Name of the Windows Service (this is not always the display name)."
+- **Service Name:** Name of the Windows Service (this is not always the display name).
 
 ### Stop Windows Service
 
 ### Options
+- **Service Name:** Name of the Windows Service (this is not always the display name).

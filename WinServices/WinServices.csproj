@@ -46,6 +46,8 @@
     <None Include="gruntfile.js" />
     <None Include="license.md" />
     <None Include="package.json" />
+    <Content Include="screenshot-01.jpg" />
+    <Content Include="screenshot-02.jpg" />
     <Content Include="StartWindowsService\startservice.ps1" />
     <Content Include="StartWindowsService\task.json" />
     <Content Include="StopWindowsService\stopservice.ps1" />
