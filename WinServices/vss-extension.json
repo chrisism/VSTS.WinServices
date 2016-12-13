@@ -3,8 +3,9 @@
 	"id": "jungit-winservices",
 	"name": "Windows Services Toolbox",
 	"description": "Toolbox of tasks to manage windows services",
-	"version": "1.0.3",
+	"version": "1.0.5",
 	"publisher": "jungeriusit",
+	"public": true, 
 	"baseUri": "https://github.com/chrisism/",
 	"scopes": [],
 	"tags": [
