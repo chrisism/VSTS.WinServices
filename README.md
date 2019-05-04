@@ -29,6 +29,7 @@ Creates a new windows service on the target machine.
 - **Description:** Description of the Windows Service.
 - **Startup type:** The startup type of the service. Choose from:
   - Automatic
+  - Automatic (Delayed Start)
   - Manual
   - Disabled
 - **Log on as:** Type of user to log on. Choose from:
