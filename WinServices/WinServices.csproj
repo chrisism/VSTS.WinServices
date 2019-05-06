@@ -19,6 +19,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,9 +42,11 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="RemoveWindowsService\icon.png" />
     <Content Include="CreateWindowsService\createservice.ps1" />
     <Content Include="CreateWindowsService\task.json" />
-    <None Include="gruntfile.js" />
+    <Content Include="RemoveWindowsService\removeservice.ps1" />
+    <Content Include="RemoveWindowsService\task.json" />
     <None Include="license.md" />
     <None Include="package.json" />
     <Content Include="screenshot-01.jpg" />
