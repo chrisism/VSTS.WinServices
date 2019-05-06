@@ -2,8 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/VSTS.WinServices/v14/.suo
-/.vs/config
+/.vs
+/WinServices/package-lock.json
 *.vsix
-/.vs/VSTS.WinServices/v15
-/.vs/VSTS.WinServices

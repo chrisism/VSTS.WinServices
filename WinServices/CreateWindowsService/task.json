@@ -67,6 +67,7 @@
 			"helpMarkDown": "The startup type of the service.",
 			"options": {
 				"Automatic": "Automatic",
+				"AutomaticDelayedStart": "Automatic (Delayed Start)",
 				"Manual": "Manual",
 				"Disabled": "Disabled"
 			}
