@@ -28,6 +28,13 @@ if ($existingService)
 	Start-Sleep -s 5  
 }
 
+$startupTypeIsAutomaticDelayedStart = $startupType -eq "AutomaticDelayedStart"
+
+if ($startupTypeIsAutomaticDelayedStart) {
+
+	$startupType = "Automatic"	
+}
+
 if ($userType -eq "Custom") {
 	
 	$servicePassword = convertto-securestring -String $password -AsPlainText -Force  
@@ -41,6 +48,17 @@ if ($userType -eq "Custom") {
 	Write-Host "Installing the service with local system account."
 	New-Service -BinaryPathName "$exePath" -Name "$serviceName" -DisplayName "$displayName" -Description "$description" -StartupType $startupType 
 
+}
+
+if ($startupTypeIsAutomaticDelayedStart) {	
+
+	$Output = Invoke-Expression -Command "sc.exe config $serviceName start= delayed-auto" -ErrorAction Stop
+	
+	if($LASTEXITCODE -ne 0) {
+
+		Write-Error "Failed to set $serviceName to automatic delayed start.`r`n`t$Output"				
+		Exit $LASTEXITCODE
+	}
 }
 
 Write-Host "Installed the service."
