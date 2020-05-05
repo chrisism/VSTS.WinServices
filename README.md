@@ -1,7 +1,9 @@
-# Windows Services Toolbox (VSTS task)
+# Windows Services Toolbox (Azure Devops task)
 Toolbox of tasks to manage windows services.
 
-Are these VSTS extensions helping you? 
+------
+
+Are these devops extensions helping you? 
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BSMTZP9VKP8QN)
 

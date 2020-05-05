@@ -61,10 +61,10 @@
 	],
 	"content": {
 		"details": {
-			"path": "overview.md"
+			"path": "README.md"
 		},
 		"license": {
-			"path": "license.md"
+			"path": "LICENSE"
 		}
 	},
 	"contributions": [

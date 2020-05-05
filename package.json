@@ -1,0 +1,24 @@
+{
+    "id": "jungit-winservices",
+    "private": true,
+    "version": "1.1.1",
+    "scripts": {
+        "build": "tfx extension create --manifest-globs ./vss-extension.json",
+        "deploy-task": "tfx build tasks upload --token _@token@_ --auth-type pat --task-path_./Task ---service-url https://jungerius.visualstudio.com/DefaultCollection",
+        "deploy": "npm run deploy-task",
+        "publish": "tfx extension publish --token _@token@_ --auth-type pat --vsix _@vsix@_ ---service-url https://marketplace.visualstudio.com/"
+    },
+    "devDependencies": {
+        "tfx-cli": "0.7.11"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chrisism/vsts.winservices.git"
+    },
+    "author": "Jungerius IT Consultancy",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/chrisism/repository.chrisism/issues"
+    },
+    "homepage": "https://github.com/chrisism/repository.chrisism#readme"
+}
