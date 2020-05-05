@@ -1,0 +1,88 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  GitVersion.SemVer: ''
+
+steps:
+- task: UseGitVersion@5
+  inputs:
+    versionSpec: '5.x'
+    updateAssemblyInfo: false
+  displayName: gitversion
+
+- task: RegExMatchReplace@2
+  inputs:
+    PathToFile: '$(Build.SourcesDirectory)/package.json'
+    RegEx: '"version":\s*"\d+\.\d+\.\d"'
+    ValueToReplace: '"version": "$(GitVersion.SemVer)"'
+
+- task: RegExMatchReplace@2
+  inputs:
+    PathToFile: '$(Build.SourcesDirectory)/package.json'
+    RegEx: '_@vsix@_'
+    ValueToReplace: './jungeriusit.jungit-winservices-$(GitVersion.SemVer).vsix'
+
+- task: RegExMatchReplace@2
+  inputs:
+    PathToFile: '$(Build.SourcesDirectory)/vss-extension.json'
+    RegEx: '"version":\s*"\d+\.\d+\.\d"'
+    ValueToReplace: '"version": "$(GitVersion.SemVer)"'
+
+- task: RegExMatchReplace@2
+  inputs:
+    PathToFile: '$(Build.SourcesDirectory)/Task/task.json'
+    RegEx: '"Major":\s*\d+'
+    ValueToReplace: '"Major": "$(GitVersion.Major)"'
+    
+- task: RegExMatchReplace@2
+  inputs:
+    PathToFile: '$(Build.SourcesDirectory)/CreateWindowsService/task.json'
+    RegEx: '"Minor":\s*\d+'
+    ValueToReplace: '"Minor": "$(GitVersion.Minor)"'
+    
+- task: RegExMatchReplace@2
+  inputs:
+    PathToFile: '$(Build.SourcesDirectory)/Task/task.json'
+    RegEx: '"Patch":\s*\d+'
+    ValueToReplace: '"Patch": "$(GitVersion.Patch)"'
+
+- task: RegExMatchReplace@2
+  inputs:
+    PathToFile: '$(Build.SourcesDirectory)/BackupTask/task.json'
+    RegEx: '"Major":\s*\d+'
+    ValueToReplace: '"Major": "$(GitVersion.Major)"'
+    
+- task: RegExMatchReplace@2
+  inputs:
+    PathToFile: '$(Build.SourcesDirectory)/BackupTask/task.json'
+    RegEx: '"Minor":\s*\d+'
+    ValueToReplace: '"Minor": "$(GitVersion.Minor)"'
+    
+- task: RegExMatchReplace@2
+  inputs:
+    PathToFile: '$(Build.SourcesDirectory)/BackupTask/task.json'
+    RegEx: '"Patch":\s*\d+'
+    ValueToReplace: '"Patch": "$(GitVersion.Patch)"'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm version $(GitVersion.SemVer)
+    npm run build
+  displayName: 'npm install and build'
+
+- publish: $(System.DefaultWorkingDirectory)/
+  artifact: VsixPackage
