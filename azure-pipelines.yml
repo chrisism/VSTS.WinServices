@@ -19,59 +19,53 @@ steps:
     updateAssemblyInfo: false
   displayName: gitversion
 
-- task: RegExMatchReplace@2
+- task: RegexReplace@3
   inputs:
-    PathToFile: '$(Build.SourcesDirectory)/package.json'
-    RegEx: '"version":\s*"\d+\.\d+\.\d"'
-    ValueToReplace: '"version": "$(GitVersion.SemVer)"'
+    InputSearchPattern: '/package.json'
+    FindRegex: '"version":\s*"(\d+\.\d+\.\d+)"'
+    ReplaceRegex: '$(GitVersion.SemVer)'
+    UseUTF8: true
+    UseRAW: true
 
-- task: RegExMatchReplace@2
+- task: RegexReplace@3
   inputs:
-    PathToFile: '$(Build.SourcesDirectory)/package.json'
-    RegEx: '_@vsix@_'
-    ValueToReplace: './jungeriusit.jungit-winservices-$(GitVersion.SemVer).vsix'
+    InputSearchPattern: '/package.json'
+    FindRegex: '_@vsix@_'
+    ReplaceRegex: './jungeriusit.jungit-winservices-$(GitVersion.SemVer).vsix'
+    UseUTF8: true
+    UseRAW: true
 
-- task: RegExMatchReplace@2
+- task: RegexReplace@3
   inputs:
-    PathToFile: '$(Build.SourcesDirectory)/vss-extension.json'
-    RegEx: '"version":\s*"\d+\.\d+\.\d"'
-    ValueToReplace: '"version": "$(GitVersion.SemVer)"'
+    InputSearchPattern: 'vss-extension.json'
+    FindRegex: '"version":\s*"(\d+\.\d+\.\d+)"'
+    ReplaceRegex: '$(GitVersion.SemVer)'
+    UseUTF8: true
+    UseRAW: true
 
-- task: RegExMatchReplace@2
+- task: RegexReplace@3
   inputs:
-    PathToFile: '$(Build.SourcesDirectory)/Task/task.json'
-    RegEx: '"Major":\s*\d+'
-    ValueToReplace: '"Major": "$(GitVersion.Major)"'
-    
-- task: RegExMatchReplace@2
-  inputs:
-    PathToFile: '$(Build.SourcesDirectory)/CreateWindowsService/task.json'
-    RegEx: '"Minor":\s*\d+'
-    ValueToReplace: '"Minor": "$(GitVersion.Minor)"'
-    
-- task: RegExMatchReplace@2
-  inputs:
-    PathToFile: '$(Build.SourcesDirectory)/Task/task.json'
-    RegEx: '"Patch":\s*\d+'
-    ValueToReplace: '"Patch": "$(GitVersion.Patch)"'
+    InputSearchPattern: '**\task.json'
+    FindRegex: '"Major":\s*"(\d+)"'
+    ReplaceRegex: '$(GitVersion.Major)'
+    UseUTF8: true
+    UseRAW: true
 
-- task: RegExMatchReplace@2
+- task: RegexReplace@3
   inputs:
-    PathToFile: '$(Build.SourcesDirectory)/BackupTask/task.json'
-    RegEx: '"Major":\s*\d+'
-    ValueToReplace: '"Major": "$(GitVersion.Major)"'
+    InputSearchPattern: '**\task.json'
+    FindRegex: '"Minor":\s*"(\d+)"'
+    ReplaceRegex: '$(GitVersion.Minor)'
+    UseUTF8: true
+    UseRAW: true
     
-- task: RegExMatchReplace@2
+- task: RegexReplace@3
   inputs:
-    PathToFile: '$(Build.SourcesDirectory)/BackupTask/task.json'
-    RegEx: '"Minor":\s*\d+'
-    ValueToReplace: '"Minor": "$(GitVersion.Minor)"'
-    
-- task: RegExMatchReplace@2
-  inputs:
-    PathToFile: '$(Build.SourcesDirectory)/BackupTask/task.json'
-    RegEx: '"Patch":\s*\d+'
-    ValueToReplace: '"Patch": "$(GitVersion.Patch)"'
+    InputSearchPattern: '**\task.json'
+    FindRegex: '"Patch":\s*"(\d+)"'
+    ReplaceRegex: '$(GitVersion.Patch)'
+    UseUTF8: true
+    UseRAW: true
 
 - task: NodeTool@0
   inputs:
