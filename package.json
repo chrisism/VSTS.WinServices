@@ -9,7 +9,7 @@
         "publish": "tfx extension publish --token _@token@_ --auth-type pat --vsix _@vsix@_ ---service-url https://marketplace.visualstudio.com/"
     },
     "devDependencies": {
-        "tfx-cli": "0.7.11"
+        "tfx-cli": "0.12.0"
     },
     "repository": {
         "type": "git",
